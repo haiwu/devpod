@@ -14,5 +14,6 @@
       "source": "devpod",
       "target": "/home/vscode"
     }
-  ]
+  ],
+  "remoteUser": "root"
 }
