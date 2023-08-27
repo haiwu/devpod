@@ -118,6 +118,14 @@ export type TCheckProviderUpdateResult = Readonly<{
   updateAvailable: boolean
   latestVersion?: string
 }>
+
+export type TImportWorkspaceConfig = Readonly<{
+  workspaceID: string
+  workspaceUID: string
+  devPodProHost: string
+  options: { [key: string]: string } | null
+}>
+
 //#endregion
 
 //#region Workspace
@@ -181,8 +189,8 @@ export type TContextOption = Readonly<{
 export type TProID = string
 export type TWithProID = Readonly<{ id: TProID }>
 export type TProInstance = Readonly<{
-  id: TMaybe<string>
-  url: TMaybe<string>
+  host: TMaybe<string>
+  provider: TMaybe<string>
   creationTimestamp: TMaybe<string>
 }>
 export type TProInstances = readonly TProInstance[]
@@ -195,8 +203,8 @@ export type TProInstanceManager = Readonly<{
     Pick<UseMutationResult, "status" | "error"> & { target: TWithProID | undefined }
 }>
 export type TProInstanceLoginConfig = Readonly<{
-  url: string
-  name?: string
+  host: string
+  providerName?: string
   streamListener?: TStreamEventListenerFn
 }>
 //#endregion

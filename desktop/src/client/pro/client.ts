@@ -1,5 +1,5 @@
 import { Result, ResultError } from "../../lib"
-import { TProID, TProInstance } from "../../types"
+import { TImportWorkspaceConfig, TProID, TProInstance } from "../../types"
 import { TDebuggable, TStreamEventListenerFn } from "../types"
 import { ProCommands } from "./proCommands"
 
@@ -10,16 +10,12 @@ export class ProClient implements TDebuggable {
     ProCommands.DEBUG = isEnabled
   }
 
-  public async newID(url: string): Promise<Result<string>> {
-    return ProCommands.GetProInstanceID(url)
-  }
-
   public async login(
-    url: string,
-    name?: string,
+    host: string,
+    providerName?: string,
     listener?: TStreamEventListenerFn
   ): Promise<ResultError> {
-    return ProCommands.Login(url, name, listener)
+    return ProCommands.Login(host, providerName, listener)
   }
 
   public async listAll(): Promise<Result<readonly TProInstance[]>> {
@@ -28,5 +24,9 @@ export class ProClient implements TDebuggable {
 
   public async remove(id: TProID) {
     return ProCommands.RemoveProInstance(id)
+  }
+
+  public async importWorkspace(config: TImportWorkspaceConfig): Promise<ResultError> {
+    return ProCommands.ImportWorkspace(config)
   }
 }

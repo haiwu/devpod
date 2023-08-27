@@ -1,11 +1,11 @@
-import { Result, ResultError, Return, exists, getErrorFromChildProcess } from "../../lib"
+import { exists, getErrorFromChildProcess, Result, ResultError, Return } from "../../lib"
 import {
   TAddProviderConfig,
   TCheckProviderUpdateResult,
-  TProviderSource,
   TProviderID,
   TProviderOptions,
   TProviders,
+  TProviderSource,
 } from "../../types"
 import { Command, isOk, serializeRawOptions, toFlagArg } from "../command"
 import {

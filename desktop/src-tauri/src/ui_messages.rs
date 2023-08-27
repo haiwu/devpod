@@ -8,6 +8,7 @@ use serde::Serialize;
 use std::collections::VecDeque;
 use tauri::Manager;
 use tokio::sync::mpsc::Receiver;
+use crate::custom_protocol::ImportWorkspaceMsg;
 
 #[derive(Debug, Clone)]
 pub struct UiMessageHelper {
@@ -73,7 +74,8 @@ pub enum UiMessage {
     ShowDashboard,
     ShowToast(ShowToastMsg),
     OpenWorkspace(OpenWorkspaceMsg),
-    OpenWorkspaceFailed(ParseError),
+    ImportWorkspace(ImportWorkspaceMsg),
+    CommandFailed(ParseError),
 }
 
 #[derive(Debug, Serialize, Clone)]
@@ -81,6 +83,16 @@ pub struct ShowToastMsg {
     title: String,
     message: String,
     status: ToastStatus,
+}
+
+impl ShowToastMsg {
+    pub fn new(title: String, message: String, status: ToastStatus) -> Self {
+        Self {
+            title,
+            message,
+            status,
+        }
+    }
 }
 
 // WARN: Needs to match the UI's toast status
