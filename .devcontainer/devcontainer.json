@@ -16,5 +16,6 @@
     }
   ],
   "runArgs": ["--userns=keep-id"],
+  "remoteUser": "${localEnv:USER}",
   "containerEnv": { "HOME": "/workspaces/devpod" }
 }
