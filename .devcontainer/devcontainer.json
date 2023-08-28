@@ -17,5 +17,16 @@
   ],
   "runArgs": ["--userns=keep-id"],
   "remoteUser": "${localEnv:USER}",
+  "customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": { "bash": { "path": "/bin/bash" } }
+      },
+			"extensions": []
+		}
+  },
   "containerEnv": { "HOME": "/workspaces/devpod" }
 }
