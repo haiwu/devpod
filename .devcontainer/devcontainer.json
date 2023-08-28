@@ -17,7 +17,5 @@
   ],
   "runArgs": ["--userns=keep-id"],
   "remoteUser": "${localEnv:USER}",
-  // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "sudo echo \"${localEnv:USER} ALL=(root) NOPASSWD:ALL\" > /etc/sudoers.d/${localEnv:USER}",
   "containerEnv": { "HOME": "/workspaces/devpod" }
 }
